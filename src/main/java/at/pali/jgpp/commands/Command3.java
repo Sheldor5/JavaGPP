@@ -29,7 +29,7 @@ public class Command3 extends Command {
             this.start = System.nanoTime();
             System.out.println(String.format("Successfully executed Command3 with ID '%s' in %dns (%dns)", this.getID(), d, this.timeLeft));
             commandExecutor.addCommand(new Command1(String.valueOf(this.count++)));
-            this.timeLeft += 2000000000l;
+            this.timeLeft = 2000000000l;
         }
         return this.deactivated;
     }
