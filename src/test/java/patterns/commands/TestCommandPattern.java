@@ -1,9 +1,7 @@
 package patterns.commands;
 
-import at.pali.jgpp.commands.Command1;
-import at.pali.jgpp.commands.Command2;
-import at.pali.jgpp.commands.Command3;
-import at.pali.jgpp.commands.CommandExecutor;
+import at.pali.jgpp.commands.*;
+import org.junit.Assert;
 import org.junit.Test;
 
 public class TestCommandPattern {
@@ -11,14 +9,29 @@ public class TestCommandPattern {
     @Test
     public void testCommandPatterns() {
 
-        final CommandExecutor commandExecutor = CommandExecutor.getInstance();
+        final CommandExecutor2 commandExecutor = CommandExecutor2.getInstance();
 
-        commandExecutor.addCommand(new Command1("1"));
-        commandExecutor.addCommand(new Command2("2"));
-        commandExecutor.addCommand(new Command3("3"));
+        commandExecutor.addCommand(new Command4("40"));
 
-        while (!commandExecutor.isEmpty()) {
+        while (true) {
             commandExecutor.executeCommands();
+        }
+    }
+
+    @Test
+    public void testCommandPatterns2() {
+
+        final CommandExecutor2 commandExecutor = CommandExecutor2.getInstance();
+
+        commandExecutor.addCommand(new Command4("40"));
+
+        while (true) {
+            commandExecutor.executeCommands();
+            try {
+                Thread.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 

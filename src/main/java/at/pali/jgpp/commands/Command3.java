@@ -8,13 +8,13 @@ public class Command3 extends Command {
 
     private final CommandExecutor commandExecutor;
 
-    // 2000000000ns = 2s
-    private long timeLeft = 2000000000;
+    // 1000000000ns = 1s
+    public static final long NANOS = 1000000000l;
+
+    private long timeLeft = NANOS;
     private long start;
 
     private boolean deactivated = false;
-
-    private int count = 10;
 
     public Command3(final String paramID) {
         super(paramID);
@@ -25,11 +25,9 @@ public class Command3 extends Command {
     public boolean execute(final long delta) {
         this.timeLeft -= delta;
         if (this.timeLeft <= 0) {
-            final long d = System.nanoTime() - this.start;
+            System.out.println(String.format("Successfully executed Command3 with ID '%s' in %dns (%dns)", this.getID(), System.nanoTime() - this.start, this.timeLeft));
             this.start = System.nanoTime();
-            System.out.println(String.format("Successfully executed Command3 with ID '%s' in %dns (%dns)", this.getID(), d, this.timeLeft));
-            commandExecutor.addCommand(new Command1(String.valueOf(this.count++)));
-            this.timeLeft = 2000000000l;
+            this.timeLeft += NANOS;
         }
         return this.deactivated;
     }
