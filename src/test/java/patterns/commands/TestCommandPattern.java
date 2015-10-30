@@ -11,8 +11,9 @@ public class TestCommandPattern {
 
         final CommandExecutor2 commandExecutor = CommandExecutor2.getInstance();
 
-        commandExecutor.addCommand(new Command4("40"));
+        commandExecutor.addCommand(new Command4("1"));
 
+        // inaccurate
         while (true) {
             commandExecutor.executeCommands();
         }
@@ -23,8 +24,9 @@ public class TestCommandPattern {
 
         final CommandExecutor2 commandExecutor = CommandExecutor2.getInstance();
 
-        commandExecutor.addCommand(new Command4("40"));
+        commandExecutor.addCommand(new Command4("1"));
 
+        // much more accurate
         while (true) {
             commandExecutor.executeCommands();
             try {
